@@ -4,12 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Photo Timeline</title>
+  <title>///.ARCHIVES.v.0.1///</title>
 
   <style>
-    /* =========================
-       BASIC RESET
-    ========================== */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -25,6 +22,7 @@
       background: #f7f7f5;
       color: #222;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     img {
@@ -37,9 +35,7 @@
       text-decoration: none;
     }
 
-    /* =========================
-       HEADER
-    ========================== */
+    /* HEADER */
 
     header {
       min-height: 75vh;
@@ -53,14 +49,18 @@
     }
 
     .hero {
-      max-width: 800px;
+      width: 100%;
+      max-width: 1000px;
+      padding: 0 10px;
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(2rem, 7vw, 5.5rem);
       font-weight: 500;
       letter-spacing: -2px;
+      line-height: 1.05;
       margin-bottom: 20px;
+      overflow-wrap: anywhere;
     }
 
     .hero p {
@@ -68,9 +68,7 @@
       opacity: 0.75;
     }
 
-    /* =========================
-       NAVIGATION
-    ========================== */
+    /* NAV */
 
     nav {
       position: sticky;
@@ -94,9 +92,7 @@
       opacity: 0.5;
     }
 
-    /* =========================
-       MAIN CONTENT
-    ========================== */
+    /* MAIN */
 
     main {
       width: min(1100px, 92%);
@@ -109,9 +105,7 @@
       margin: 100px 0 60px;
     }
 
-    /* =========================
-       TIMELINE
-    ========================== */
+    /* TIMELINE */
 
     .timeline {
       position: relative;
@@ -176,9 +170,7 @@
       color: #555;
     }
 
-    /* =========================
-       PHOTO GRID
-    ========================== */
+    /* PHOTO GRID */
 
     .photo-grid {
       display: grid;
@@ -199,14 +191,7 @@
       transform: scale(1.005);
     }
 
-    .photo-grid .wide {
-      grid-column: span 2;
-      height: 520px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================== */
+    /* ABOUT */
 
     .about {
       max-width: 700px;
@@ -218,9 +203,7 @@
       color: #555;
     }
 
-    /* =========================
-       FOOTER
-    ========================== */
+    /* FOOTER */
 
     footer {
       border-top: 1px solid #ddd;
@@ -230,19 +213,15 @@
       font-size: 0.85rem;
     }
 
-    /* =========================
-       LIGHTBOX
-    ========================== */
+    /* LIGHTBOX */
 
     .lightbox {
       position: fixed;
       inset: 0;
       z-index: 1000;
-
       display: none;
       align-items: center;
       justify-content: center;
-
       background: rgba(0, 0, 0, 0.94);
       padding: 30px;
     }
@@ -266,71 +245,165 @@
       cursor: pointer;
     }
 
-    /* =========================
-       MOBILE
-    ========================== */
+    /* TABLET */
 
-    @media (max-width: 700px) {
-
-      .hero h1 {
-        font-size: 3.5rem;
+    @media (max-width: 900px) {
+      main {
+        width: 92%;
       }
 
       .timeline::before {
-        left: 10px;
+        left: 105px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 80px 1fr;
+        gap: 50px;
+      }
+
+      .photo-grid img {
+        height: 260px;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 650px) {
+      header {
+        min-height: 52vh;
+        padding: 40px 16px;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.55rem, 8vw, 2.8rem);
+        letter-spacing: -0.7px;
+        line-height: 1.1;
+        white-space: nowrap;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      nav {
+        justify-content: space-around;
+        gap: 4px;
+        padding: 10px 5px;
+      }
+
+      nav a {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+      }
+
+      main {
+        width: 100%;
+        padding: 0 18px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin: 60px 0 40px;
+      }
+
+      .timeline {
+        margin-bottom: 70px;
+      }
+
+      .timeline::before {
+        left: 5px;
       }
 
       .timeline-item {
         display: block;
-        padding-left: 40px;
+        padding-left: 30px;
+        margin-bottom: 70px;
       }
 
       .timeline-date {
         text-align: left;
-        margin-bottom: 10px;
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+        padding-top: 0;
       }
 
       .timeline-content::before {
-        left: -34px;
+        left: -29px;
+        top: 7px;
+      }
+
+      .timeline-content h2 {
+        font-size: 1.6rem;
+      }
+
+      .location {
+        font-size: 0.85rem;
+        margin-bottom: 18px;
+      }
+
+      .description {
+        font-size: 0.95rem;
+        margin-bottom: 22px;
       }
 
       .photo-grid {
         grid-template-columns: 1fr;
-      }
-
-      .photo-grid .wide {
-        grid-column: span 1;
-        height: 320px;
+        gap: 10px;
       }
 
       .photo-grid img {
+        width: 100%;
         height: auto;
+        object-fit: contain;
       }
 
+      .about {
+        margin-bottom: 80px;
+      }
+
+      .about p {
+        font-size: 1rem;
+      }
+
+      .lightbox {
+        padding: 10px;
+      }
+
+      .lightbox img {
+        max-width: 100%;
+        max-height: 85vh;
+      }
+
+      .lightbox-close {
+        top: 8px;
+        right: 12px;
+        font-size: 2.4rem;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 1.35rem;
+        letter-spacing: -0.4px;
+      }
+
+      nav a {
+        font-size: 0.78rem;
+        padding: 7px 7px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HERO
-  ========================== -->
-
   <header id="home">
     <div class="hero">
       <h1>///.ARCHIVES.v.0.1///</h1>
-
-      <p>
-        Vintage Lenses + mirrorless cameras.
-      </p>
+      <p>Vintage Lenses + mirrorless cameras.</p>
     </div>
   </header>
-
-
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
 
   <nav>
     <a href="#home">Home</a>
@@ -338,21 +411,13 @@
     <a href="#about">About</a>
   </nav>
 
-
   <main>
-
-    <!-- =========================
-         TIMELINE
-    ========================== -->
 
     <section id="timeline">
 
       <h1 class="section-title">Timeline</h1>
 
       <div class="timeline">
-
-
-        <!-- ===== TIMELINE ENTRY 1 ===== -->
 
         <article class="timeline-item">
 
@@ -375,21 +440,100 @@
             <div class="photo-grid">
 
               <img
-                src="photos/fuji-01.jpg"
+                src="photos/P9270919.jpg"
                 alt="Fuji Speedway"
+                loading="lazy"
                 onclick="openLightbox(this.src)"
               >
 
               <img
-                src="photos/fuji-02.jpg"
+                src="photos/P9270922.jpg"
                 alt="Fuji Speedway"
+                loading="lazy"
                 onclick="openLightbox(this.src)"
               >
 
               <img
-                class="wide"
-                src="photos/fuji-03.jpg"
+                src="photos/P9270925.jpg"
                 alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9270926.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9270927.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9271783.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9271908.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9271952.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9271963.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9272006.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9272051.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9272083.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9272168.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
+                onclick="openLightbox(this.src)"
+              >
+
+              <img
+                src="photos/P9272652.jpg"
+                alt="Fuji Speedway"
+                loading="lazy"
                 onclick="openLightbox(this.src)"
               >
 
@@ -398,60 +542,11 @@
           </div>
 
         </article>
-
-
-        <!-- ===== TIMELINE ENTRY 2 ===== -->
-
-        <article class="timeline-item">
-
-          <div class="timeline-date">
-            Aug 2026
-          </div>
-
-          <div class="timeline-content">
-
-            <h2>Tokyo</h2>
-
-            <div class="location">
-              Tokyo, Japan
-            </div>
-
-            <p class="description">
-              Summer scenes around Tokyo.
-            </p>
-
-            <div class="photo-grid">
-
-              <img
-                src="photos/tokyo-01.jpg"
-                alt="Tokyo"
-                onclick="openLightbox(this.src)"
-              >
-
-              <img
-                src="photos/tokyo-02.jpg"
-                alt="Tokyo"
-                onclick="openLightbox(this.src)"
-              >
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- ===== ADD MORE ENTRIES BELOW ===== -->
-
 
       </div>
 
     </section>
 
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
 
     <section id="about">
 
@@ -460,7 +555,10 @@
       <div class="about">
 
         <p>
-           Photography archive documenting places I visited. A7S + SG Image 55mm/Contax Zeiss 135mm; Olympus EM1 + TTArtisan 50mm; Other Zoom lenses.
+          Photography archive documenting places I visited.
+          A7S + SG Image 55mm / Contax Zeiss 135mm;
+          Olympus EM1 + TTArtisan 50mm;
+          other zoom lenses.
         </p>
 
       </div>
@@ -470,18 +568,10 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
   <footer>
-    © 2026 Your Name
+    © 2026
   </footer>
 
-
-  <!-- =========================
-       LIGHTBOX
-  ========================== -->
 
   <div
     id="lightbox"
@@ -489,23 +579,20 @@
     onclick="closeLightbox()"
   >
 
-    <span class="lightbox-close">
-      ×
-    </span>
+    <span class="lightbox-close">×</span>
 
-    <img id="lightbox-image" src="" alt="Expanded photograph">
+    <img
+      id="lightbox-image"
+      src=""
+      alt="Expanded photograph"
+    >
 
   </div>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-
   <script>
 
     function openLightbox(src) {
-
       const lightbox =
         document.getElementById("lightbox");
 
@@ -516,28 +603,25 @@
 
       lightbox.classList.add("active");
 
+      document.body.style.overflow = "hidden";
     }
 
 
     function closeLightbox() {
-
       document
         .getElementById("lightbox")
         .classList.remove("active");
 
+      document.body.style.overflow = "";
     }
 
 
     document.addEventListener(
       "keydown",
       function(event) {
-
         if (event.key === "Escape") {
-
           closeLightbox();
-
         }
-
       }
     );
 

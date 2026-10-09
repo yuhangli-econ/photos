@@ -1,24 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>///.ARCHIVES.v.0.1///</title>
 
   <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #f7f7f5;
@@ -26,632 +15,279 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    /* =========================
-       HEADER
-    ========================== */
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
 
     header {
       min-height: 75vh;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       text-align: center;
-
       padding: 40px 20px;
-
       background: #111;
       color: white;
     }
-
-    .hero {
-      width: 100%;
-      max-width: 1000px;
-    }
-
+    .hero { width: 100%; max-width: 1000px; }
     .hero h1 {
       font-size: clamp(2rem, 7vw, 5.5rem);
       font-weight: 500;
-
       letter-spacing: -2px;
       line-height: 1.05;
-
       margin-bottom: 20px;
     }
-
-    .hero p {
-      font-size: 1.1rem;
-      opacity: 0.75;
-    }
-
-
-    /* =========================
-       NAVIGATION
-    ========================== */
+    .hero p { font-size: 1.1rem; opacity: 0.75; }
 
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-
       display: flex;
       justify-content: center;
-
       gap: 30px;
-
       padding: 15px 20px;
-
       background: rgba(247, 247, 245, 0.95);
-
       backdrop-filter: blur(10px);
-
       border-bottom: 1px solid #ddd;
     }
+    nav a { font-size: 0.9rem; font-weight: 500; }
+    nav a:hover { opacity: 0.5; }
 
-    nav a {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      opacity: 0.5;
-    }
-
-
-    /* =========================
-       MAIN
-    ========================== */
-
-    main {
-      width: min(1100px, 92%);
-      margin: 0 auto;
-    }
-
+    main { width: min(1100px, 92%); margin: 0 auto; }
     .section-title {
       font-size: 2.5rem;
       font-weight: 500;
-
       margin: 100px 0 60px;
     }
 
-
-    /* =========================
-       TIMELINE
-    ========================== */
-
-    .timeline {
-      position: relative;
-      margin-bottom: 120px;
-    }
-
+    .timeline { position: relative; margin-bottom: 120px; }
     .timeline::before {
       content: "";
-
       position: absolute;
-
       left: 130px;
       top: 0;
       bottom: 0;
-
       width: 1px;
-
       background: #ccc;
     }
-
     .timeline-item {
       display: grid;
-
       grid-template-columns: 100px 1fr;
-
       gap: 60px;
-
       position: relative;
-
       margin-bottom: 100px;
     }
-
     .timeline-date {
       text-align: right;
-
       font-size: 0.9rem;
       color: #777;
-
       padding-top: 4px;
     }
-
-    .timeline-content {
-      position: relative;
-    }
-
+    .timeline-content { position: relative; }
     .timeline-content::before {
       content: "";
-
       position: absolute;
-
       left: -35px;
       top: 8px;
-
       width: 9px;
       height: 9px;
-
       border-radius: 50%;
-
       background: #222;
     }
-
     .timeline-content h2 {
       font-size: 2rem;
       font-weight: 500;
-
       margin-bottom: 5px;
     }
-
     .location {
       color: #777;
-
       margin-bottom: 10px;
-
       font-size: 0.95rem;
     }
-
     .gear {
       font-size: 0.85rem;
-
       color: #999;
-
       margin-bottom: 22px;
     }
-
     .description {
       max-width: 700px;
-
       margin-bottom: 30px;
-
       color: #555;
     }
-
-
-    /* =========================
-       PHOTO GRID
-    ========================== */
 
     .photo-grid {
       display: grid;
-
       grid-template-columns: repeat(2, 1fr);
-
       gap: 14px;
     }
-
     .photo-grid img {
       width: 100%;
       height: 320px;
-
       object-fit: cover;
-
       cursor: pointer;
-
-      transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
-
     .photo-grid img:hover {
       opacity: 0.85;
-
       transform: scale(1.005);
     }
 
-
-    /* =========================
-       ABOUT
-    ========================== */
-
-    .about {
-      max-width: 700px;
-
-      margin-bottom: 120px;
-    }
-
-    .about p {
-      font-size: 1.1rem;
-
-      color: #555;
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================== */
+    .about { max-width: 700px; margin-bottom: 120px; }
+    .about p { font-size: 1.1rem; color: #555; }
 
     footer {
       border-top: 1px solid #ddd;
-
       padding: 50px 20px;
-
       text-align: center;
-
       color: #777;
-
       font-size: 0.85rem;
     }
 
-
-    /* =========================
-       LIGHTBOX
-    ========================== */
-
     .lightbox {
       position: fixed;
-
       inset: 0;
-
       z-index: 1000;
-
       display: none;
-
       align-items: center;
       justify-content: center;
-
-      background: rgba(0, 0, 0, 0.95);
-
+      background: rgba(0,0,0,0.95);
       padding: 25px;
     }
-
-    .lightbox.active {
-      display: flex;
-    }
-
+    .lightbox.active { display: flex; }
     .lightbox img {
       max-width: 90vw;
       max-height: 88vh;
-
       object-fit: contain;
-
       user-select: none;
     }
-
     .lightbox-close {
       position: absolute;
-
       top: 20px;
       right: 30px;
-
       color: white;
-
       font-size: 2.5rem;
-
       cursor: pointer;
-
       z-index: 1010;
     }
-
     .lightbox-arrow {
       position: absolute;
-
       top: 50%;
-
       transform: translateY(-50%);
-
       color: white;
-
       font-size: 3.5rem;
-
       cursor: pointer;
-
       z-index: 1010;
-
       padding: 20px;
-
       opacity: 0.75;
     }
-
-    .lightbox-arrow:hover {
-      opacity: 1;
-    }
-
-    .lightbox-prev {
-      left: 15px;
-    }
-
-    .lightbox-next {
-      right: 15px;
-    }
-
+    .lightbox-arrow:hover { opacity: 1; }
+    .lightbox-prev { left: 15px; }
+    .lightbox-next { right: 15px; }
     .lightbox-counter {
       position: absolute;
-
       bottom: 18px;
       left: 50%;
-
       transform: translateX(-50%);
-
       color: white;
-
       font-size: 0.8rem;
-
       opacity: 0.7;
     }
 
-
-    /* =========================
-       TABLET
-    ========================== */
-
     @media (max-width: 900px) {
-
-      main {
-        width: 92%;
-      }
-
-      .timeline::before {
-        left: 105px;
-      }
-
-      .timeline-item {
-        grid-template-columns: 80px 1fr;
-
-        gap: 50px;
-      }
-
-      .photo-grid img {
-        height: 260px;
-      }
-
+      main { width: 92%; }
+      .timeline::before { left: 105px; }
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 50px; }
+      .photo-grid img { height: 260px; }
     }
-
-
-    /* =========================
-       MOBILE
-    ========================== */
 
     @media (max-width: 650px) {
-
-      header {
-        min-height: 52vh;
-
-        padding: 40px 16px;
-      }
-
+      header { min-height: 52vh; padding: 40px 16px; }
       .hero h1 {
         font-size: clamp(1.45rem, 7vw, 2.7rem);
-
         letter-spacing: -0.5px;
-
         white-space: nowrap;
       }
-
-      .hero p {
-        font-size: 0.95rem;
-      }
-
-      nav {
-        justify-content: space-around;
-
-        gap: 4px;
-
-        padding: 10px 5px;
-      }
-
-      nav a {
-        font-size: 0.85rem;
-
-        padding: 8px 10px;
-      }
-
-      main {
-        width: 100%;
-
-        padding: 0 18px;
-      }
-
-      .section-title {
-        font-size: 2rem;
-
-        margin: 60px 0 40px;
-      }
-
-      .timeline {
-        margin-bottom: 70px;
-      }
-
-      .timeline::before {
-        left: 5px;
-      }
-
-      .timeline-item {
-        display: block;
-
-        padding-left: 30px;
-
-        margin-bottom: 75px;
-      }
-
+      .hero p { font-size: 0.95rem; }
+      nav { justify-content: space-around; gap: 4px; padding: 10px 5px; }
+      nav a { font-size: 0.85rem; padding: 8px 10px; }
+      main { width: 100%; padding: 0 18px; }
+      .section-title { font-size: 2rem; margin: 60px 0 40px; }
+      .timeline { margin-bottom: 70px; }
+      .timeline::before { left: 5px; }
+      .timeline-item { display: block; padding-left: 30px; margin-bottom: 75px; }
       .timeline-date {
         text-align: left;
-
         font-size: 0.8rem;
-
         margin-bottom: 6px;
-
         padding-top: 0;
       }
-
-      .timeline-content::before {
-        left: -29px;
-
-        top: 7px;
-      }
-
-      .timeline-content h2 {
-        font-size: 1.6rem;
-      }
-
-      .location {
-        font-size: 0.85rem;
-      }
-
-      .gear {
-        font-size: 0.8rem;
-      }
-
-      .description {
-        font-size: 0.95rem;
-
-        margin-bottom: 22px;
-      }
-
-      .photo-grid {
-        grid-template-columns: 1fr;
-
-        gap: 10px;
-      }
-
-      .photo-grid img {
-        width: 100%;
-
-        height: auto;
-
-        object-fit: contain;
-      }
-
-      .about {
-        margin-bottom: 80px;
-      }
-
-      .lightbox {
-        padding: 5px;
-      }
-
-      .lightbox img {
-        max-width: 100vw;
-
-        max-height: 85vh;
-      }
-
-      .lightbox-arrow {
-        font-size: 2.7rem;
-
-        padding: 15px 10px;
-      }
-
-      .lightbox-prev {
-        left: 0;
-      }
-
-      .lightbox-next {
-        right: 0;
-      }
-
+      .timeline-content::before { left: -29px; top: 7px; }
+      .timeline-content h2 { font-size: 1.6rem; }
+      .location { font-size: 0.85rem; }
+      .gear { font-size: 0.8rem; }
+      .description { font-size: 0.95rem; margin-bottom: 22px; }
+      .photo-grid { grid-template-columns: 1fr; gap: 10px; }
+      .photo-grid img { width: 100%; height: auto; object-fit: contain; }
+      .about { margin-bottom: 80px; }
+      .lightbox { padding: 5px; }
+      .lightbox img { max-width: 100vw; max-height: 85vh; }
+      .lightbox-arrow { font-size: 2.7rem; padding: 15px 10px; }
+      .lightbox-prev { left: 0; }
+      .lightbox-next { right: 0; }
     }
-
 
     @media (max-width: 380px) {
-
-      .hero h1 {
-        font-size: 1.3rem;
-      }
-
+      .hero h1 { font-size: 1.3rem; }
     }
-
   </style>
 </head>
 
-
 <body>
 
-
 <header id="home">
-
   <div class="hero">
-
     <h1>///.ARCHIVES.v.0.1///</h1>
-
-    <p>
-      Vintage Lenses + mirrorless cameras.
-    </p>
-
+    <p>Vintage Lenses + mirrorless cameras.</p>
   </div>
-
 </header>
 
-
 <nav>
-
   <a href="#home">Home</a>
-
   <a href="#timeline">Timeline</a>
-
   <a href="#about">About</a>
-
 </nav>
 
-
-
 <main>
-
-
 <section id="timeline">
-
-<h1 class="section-title">
-  Timeline
-</h1>
-
+<h1 class="section-title">Timeline</h1>
 
 <div class="timeline">
 
-
-<!-- ==================================================
-     SEP 27 2026
-     FUJI SPEEDWAY
-================================================== -->
+<article class="timeline-item">
+  <div class="timeline-date">Oct 1, 2026</div>
+  <div class="timeline-content">
+    <h2>Kasai Rinkai Koen</h2>
+    <div class="location">Tokyo, Japan</div>
+    <p class="description">Night sky.</p>
+    <div class="photo-grid">
+      <img src="thumbs/PA082677.webp" data-full="photos/PA082677.jpg" alt="Kasai Rinkai Koen" loading="lazy">
+      <img src="thumbs/PA082679.webp" data-full="photos/PA082679.jpg" alt="Kasai Rinkai Koen" loading="lazy">
+    </div>
+  </div>
+</article>
 
 <article class="timeline-item">
-
-  <div class="timeline-date">
-    Sep 27, 2026
-  </div>
-
+  <div class="timeline-date">Sep 27, 2026</div>
   <div class="timeline-content">
-
-    <h2>
-      Fuji Speedway
-    </h2>
-
-    <div class="location">
-      Shizuoka, Japan
-    </div>
-
-    <div class="gear">
-      Contax Zeiss 135mm f/2.8
-    </div>
-
-    <p class="description">
-      WEC 6h at Fuji Speedway.
-    </p>
-
-
+    <h2>Fuji Speedway</h2>
+    <div class="location">Shizuoka, Japan</div>
+    <p class="description">WEC 6h at Fuji Speedway.</p>
     <div class="photo-grid">
-
       <img src="thumbs/P9270919.webp" data-full="photos/P9270919.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/P9270922.webp" data-full="photos/P9270922.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/P9270925.webp" data-full="photos/P9270925.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/P9270926.webp" data-full="photos/P9270926.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/P9270927.webp" data-full="photos/P9270927.jpg" alt="Fuji Speedway" loading="lazy">
-
       <img src="thumbs/P9271783.webp" data-full="photos/P9271783.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/P9271908.webp" data-full="photos/P9271908.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/P9271952.webp" data-full="photos/P9271952.jpg" alt="Fuji Speedway" loading="lazy">
@@ -661,105 +297,42 @@
       <img src="thumbs/P9272083.webp" data-full="photos/P9272083.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/P9272168.webp" data-full="photos/P9272168.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/P9272652.webp" data-full="photos/P9272652.jpg" alt="Fuji Speedway" loading="lazy">
-
       <img src="thumbs/DSC04173.webp" data-full="photos/DSC04173.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/DSC04179.webp" data-full="photos/DSC04179.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/DSC04180.webp" data-full="photos/DSC04180.jpg" alt="Fuji Speedway" loading="lazy">
-
       <img src="thumbs/DSC05093.webp" data-full="photos/DSC05093.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/DSC05119.webp" data-full="photos/DSC05119.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/DSC05149.webp" data-full="photos/DSC05149.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/DSC05396.webp" data-full="photos/DSC05396.jpg" alt="Fuji Speedway" loading="lazy">
       <img src="thumbs/DSC05408.webp" data-full="photos/DSC05408.jpg" alt="Fuji Speedway" loading="lazy">
-
     </div>
-
   </div>
-
 </article>
 
-
-
-<!-- ==================================================
-     SEP 11 2026
-     TAIZHOU
-================================================== -->
-
 <article class="timeline-item">
-
-  <div class="timeline-date">
-    Sep 11, 2026
-  </div>
-
+  <div class="timeline-date">Sep 11, 2026</div>
   <div class="timeline-content">
-
-    <h2>
-      Taizhou
-    </h2>
-
-    <div class="location">
-      Taizhou, China
-    </div>
-
-    <div class="gear">
-      SLR Magic 35mm T1.3
-    </div>
-
-    <p class="description">
-      Home.
-    </p>
-
-
+    <h2>Taizhou</h2>
+    <div class="location">Taizhou, China</div>
+    <p class="description">Home.</p>
     <div class="photo-grid">
-
       <img src="thumbs/DSC03965.webp" data-full="photos/DSC03965.jpg" alt="Taizhou" loading="lazy">
       <img src="thumbs/DSC03972.webp" data-full="photos/DSC03972.jpg" alt="Taizhou" loading="lazy">
       <img src="thumbs/DSC03982.webp" data-full="photos/DSC03982.jpg" alt="Taizhou" loading="lazy">
       <img src="thumbs/DSC03988.webp" data-full="photos/DSC03988.jpg" alt="Taizhou" loading="lazy">
-
       <img src="thumbs/DSC03782.webp" data-full="photos/DSC03782.jpg" alt="Taizhou" loading="lazy">
       <img src="thumbs/DSC03834.webp" data-full="photos/DSC03834.jpg" alt="Taizhou" loading="lazy">
-
     </div>
-
   </div>
-
 </article>
 
-
-
-<!-- ==================================================
-     SEP 7 2026
-     HUZHOU
-================================================== -->
-
 <article class="timeline-item">
-
-  <div class="timeline-date">
-    Sep 7, 2026
-  </div>
-
+  <div class="timeline-date">Sep 7, 2026</div>
   <div class="timeline-content">
-
-    <h2>
-      Huzhou
-    </h2>
-
-    <div class="location">
-      Huzhou, China
-    </div>
-
-    <div class="gear">
-      SG Image 55mm f/1.8
-    </div>
-
-    <p class="description">
-      Travel.
-    </p>
-
-
+    <h2>Huzhou</h2>
+    <div class="location">Huzhou, China</div>
+    <p class="description">Travel.</p>
     <div class="photo-grid">
-
       <img src="thumbs/DSC03870.webp" data-full="photos/DSC03870.jpg" alt="Huzhou" loading="lazy">
       <img src="thumbs/DSC03873.webp" data-full="photos/DSC03873.jpg" alt="Huzhou" loading="lazy">
       <img src="thumbs/DSC03890.webp" data-full="photos/DSC03890.jpg" alt="Huzhou" loading="lazy">
@@ -767,47 +340,18 @@
       <img src="thumbs/DSC03904.webp" data-full="photos/DSC03904.jpg" alt="Huzhou" loading="lazy">
       <img src="thumbs/DSC03935.webp" data-full="photos/DSC03935.jpg" alt="Huzhou" loading="lazy">
       <img src="thumbs/DSC03947.webp" data-full="photos/DSC03947.jpg" alt="Huzhou" loading="lazy">
-
     </div>
-
   </div>
-
 </article>
 
-
-
-<!-- ==================================================
-     JUL 31 2026
-     HAKKEIJIMA
-================================================== -->
-
 <article class="timeline-item">
-
-  <div class="timeline-date">
-    Jul 31, 2026
-  </div>
-
+  <div class="timeline-date">Jul 31, 2026</div>
   <div class="timeline-content">
-
-    <h2>
-      Hakkeijima
-    </h2>
-
-    <div class="location">
-      Yokohama, Japan
-    </div>
-
-    <div class="gear">
-      Rikenon 28mm f/2.8
-    </div>
-
-    <p class="description">
-      Hakkeijima Sea Paradise.
-    </p>
-
-
+    <h2>Hakkeijima</h2>
+    <div class="location">Yokohama, Japan</div>
+    <div class="gear">Rikenon 28mm f/2.8</div>
+    <p class="description">Hakkeijima Sea Paradise.</p>
     <div class="photo-grid">
-
       <img src="thumbs/P7310670.webp" data-full="photos/P7310670.jpg" alt="Hakkeijima" loading="lazy">
       <img src="thumbs/P7310671.webp" data-full="photos/P7310671.jpg" alt="Hakkeijima" loading="lazy">
       <img src="thumbs/P7310673.webp" data-full="photos/P7310673.jpg" alt="Hakkeijima" loading="lazy">
@@ -817,436 +361,125 @@
       <img src="thumbs/P7310706.webp" data-full="photos/P7310706.jpg" alt="Hakkeijima" loading="lazy">
       <img src="thumbs/P7310726.webp" data-full="photos/P7310726.jpg" alt="Hakkeijima" loading="lazy">
       <img src="thumbs/P7310751.webp" data-full="photos/P7310751.jpg" alt="Hakkeijima" loading="lazy">
-
     </div>
-
   </div>
-
 </article>
-
-
-
-<!-- ==================================================
-     FEB 14 2023
-     OKINAWA
-================================================== -->
 
 <article class="timeline-item">
-
-  <div class="timeline-date">
-    Feb 14, 2023
-  </div>
-
+  <div class="timeline-date">Feb 14, 2023</div>
   <div class="timeline-content">
-
-    <h2>
-      Okinawa
-    </h2>
-
-    <div class="location">
-      Okinawa, Japan
-    </div>
-
-    <div class="gear">
-      Cellphone (Xiaomi Mi 10 Pro)
-    </div>
-
-    <p class="description">
-      Travel and Seichi Junrei for title 'Aquatope of White Sand'.
-    </p>
-
-
+    <h2>Okinawa</h2>
+    <div class="location">Okinawa, Japan</div>
+    <div class="gear">Cellphone (Xiaomi Mi 10 Pro)</div>
+    <p class="description">Travel.</p>
     <div class="photo-grid">
-
-      <img
-        src="thumbs/okinawa-01.webp"
-        data-full="photos/okinawa-01.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-02.webp"
-        data-full="photos/okinawa-02.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-03.webp"
-        data-full="photos/okinawa-03.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-04.webp"
-        data-full="photos/okinawa-04.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-05.webp"
-        data-full="photos/okinawa-05.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-06.webp"
-        data-full="photos/okinawa-06.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-07.webp"
-        data-full="photos/okinawa-07.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-08.webp"
-        data-full="photos/okinawa-08.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-09.webp"
-        data-full="photos/okinawa-09.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-10.webp"
-        data-full="photos/okinawa-10.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-11.webp"
-        data-full="photos/okinawa-11.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
-      <img
-        src="thumbs/okinawa-12.webp"
-        data-full="photos/okinawa-12.jpg"
-        alt="Okinawa"
-        loading="lazy"
-      >
-
+      <img src="thumbs/okinawa-01.webp" data-full="photos/okinawa-01.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-02.webp" data-full="photos/okinawa-02.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-03.webp" data-full="photos/okinawa-03.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-04.webp" data-full="photos/okinawa-04.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-05.webp" data-full="photos/okinawa-05.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-06.webp" data-full="photos/okinawa-06.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-07.webp" data-full="photos/okinawa-07.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-08.webp" data-full="photos/okinawa-08.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-09.webp" data-full="photos/okinawa-09.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-10.webp" data-full="photos/okinawa-10.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-11.webp" data-full="photos/okinawa-11.jpg" alt="Okinawa" loading="lazy">
+      <img src="thumbs/okinawa-12.webp" data-full="photos/okinawa-12.jpg" alt="Okinawa" loading="lazy">
     </div>
-
   </div>
-
 </article>
 
-
 </div>
-
 </section>
-
-
-
-<!-- =========================
-     ABOUT
-========================== -->
 
 <section id="about">
-
-<h1 class="section-title">
-  About
-</h1>
-
-<div class="about">
-
-<p>
-  Photography archive documenting places I visited.
-  A7S + SG Image 55mm / Contax Zeiss 135mm;
-  Olympus EM1 + TTArtisan 50mm;
-  other zoom lenses and mobile photography.
-</p>
-
-</div>
-
+  <h1 class="section-title">About</h1>
+  <div class="about">
+    <p>
+      Photography archive documenting places I visited.
+      A7S + SG Image 55mm / Contax Zeiss 135mm;
+      Olympus EM1 + TTArtisan 50mm;
+      other zoom lenses and mobile photography.
+    </p>
+  </div>
 </section>
-
-
 </main>
 
+<footer>© 2026</footer>
 
-
-<footer>
-  © 2026
-</footer>
-
-
-
-<!-- =========================
-     LIGHTBOX
-========================== -->
-
-<div
-  id="lightbox"
-  class="lightbox"
-  onclick="closeLightbox(event)"
->
-
-<span
-  class="lightbox-close"
-  onclick="closeLightbox(event)"
->
-×
-</span>
-
-
-<span
-  class="lightbox-arrow lightbox-prev"
-  onclick="previousPhoto(event)"
->
-‹
-</span>
-
-
-<img
-  id="lightbox-image"
-  src=""
-  alt="Expanded photograph"
-  onclick="event.stopPropagation()"
->
-
-
-<span
-  class="lightbox-arrow lightbox-next"
-  onclick="nextPhoto(event)"
->
-›
-</span>
-
-
-<div
-  id="lightbox-counter"
-  class="lightbox-counter"
-></div>
-
-
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+  <span class="lightbox-close" onclick="closeLightbox(event)">×</span>
+  <span class="lightbox-arrow lightbox-prev" onclick="previousPhoto(event)">‹</span>
+  <img id="lightbox-image" src="" alt="Expanded photograph" onclick="event.stopPropagation()">
+  <span class="lightbox-arrow lightbox-next" onclick="nextPhoto(event)">›</span>
+  <div id="lightbox-counter" class="lightbox-counter"></div>
 </div>
 
-
-
 <script>
-
 let photos = [];
-
 let currentPhotoIndex = 0;
 
+document.addEventListener("DOMContentLoaded", function () {
+  photos = Array.from(document.querySelectorAll(".photo-grid img"));
 
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
-
-    photos =
-      Array.from(
-        document.querySelectorAll(
-          ".photo-grid img"
-        )
-      );
-
-
-    photos.forEach(
-      function (photo, index) {
-
-        photo.addEventListener(
-          "click",
-          function () {
-
-            openLightbox(index);
-
-          }
-        );
-
-      }
-    );
-
-  }
-);
-
-
+  photos.forEach(function (photo, index) {
+    photo.addEventListener("click", function () {
+      openLightbox(index);
+    });
+  });
+});
 
 function openLightbox(index) {
-
   currentPhotoIndex = index;
-
   updateLightbox();
-
-  document
-    .getElementById("lightbox")
-    .classList
-    .add("active");
-
-  document.body.style.overflow =
-    "hidden";
-
+  document.getElementById("lightbox").classList.add("active");
+  document.body.style.overflow = "hidden";
 }
-
-
 
 function updateLightbox() {
-
-  const image =
-    document.getElementById(
-      "lightbox-image"
-    );
-
-  const counter =
-    document.getElementById(
-      "lightbox-counter"
-    );
-
-
-  /*
-    Homepage:
-    thumbs/photo.webp
-
-    Lightbox:
-    photos/photo.jpg
-  */
+  const image = document.getElementById("lightbox-image");
+  const counter = document.getElementById("lightbox-counter");
 
   image.src =
-    photos[currentPhotoIndex]
-      .dataset.full
-    ||
-    photos[currentPhotoIndex]
-      .src;
+    photos[currentPhotoIndex].dataset.full ||
+    photos[currentPhotoIndex].src;
 
-
-  image.alt =
-    photos[currentPhotoIndex]
-      .alt;
-
+  image.alt = photos[currentPhotoIndex].alt;
 
   counter.textContent =
-    (currentPhotoIndex + 1)
-    + " / "
-    + photos.length;
-
+    (currentPhotoIndex + 1) + " / " + photos.length;
 }
-
-
 
 function nextPhoto(event) {
-
-  if (event) {
-    event.stopPropagation();
-  }
-
+  if (event) event.stopPropagation();
   currentPhotoIndex =
-    (currentPhotoIndex + 1)
-    % photos.length;
-
+    (currentPhotoIndex + 1) % photos.length;
   updateLightbox();
-
 }
-
-
 
 function previousPhoto(event) {
-
-  if (event) {
-    event.stopPropagation();
-  }
-
+  if (event) event.stopPropagation();
   currentPhotoIndex =
-    (
-      currentPhotoIndex
-      - 1
-      + photos.length
-    )
-    % photos.length;
-
+    (currentPhotoIndex - 1 + photos.length) % photos.length;
   updateLightbox();
-
 }
-
-
 
 function closeLightbox(event) {
-
-  if (event) {
-    event.stopPropagation();
-  }
-
-  document
-    .getElementById("lightbox")
-    .classList
-    .remove("active");
-
+  if (event) event.stopPropagation();
+  document.getElementById("lightbox").classList.remove("active");
   document.body.style.overflow = "";
-
 }
 
+document.addEventListener("keydown", function (event) {
+  const lightbox = document.getElementById("lightbox");
 
+  if (!lightbox.classList.contains("active")) return;
 
-document.addEventListener(
-  "keydown",
-  function (event) {
-
-    const lightbox =
-      document.getElementById(
-        "lightbox"
-      );
-
-
-    if (
-      !lightbox.classList
-        .contains("active")
-    ) {
-
-      return;
-
-    }
-
-
-    if (
-      event.key === "Escape"
-    ) {
-
-      closeLightbox();
-
-    }
-
-
-    if (
-      event.key === "ArrowRight"
-    ) {
-
-      nextPhoto();
-
-    }
-
-
-    if (
-      event.key === "ArrowLeft"
-    ) {
-
-      previousPhoto();
-
-    }
-
-  }
-);
-
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowRight") nextPhoto();
+  if (event.key === "ArrowLeft") previousPhoto();
+});
 </script>
 
-
 </body>
-
 </html>
